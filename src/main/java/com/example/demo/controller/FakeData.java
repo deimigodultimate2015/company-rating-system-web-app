@@ -1,24 +1,17 @@
 package com.example.demo.controller;
 
-//import java.time.LocalDate;
-//import java.time.ZoneId;
-//import java.util.ArrayList;
-//import java.util.Date;
-//import java.util.List;
-//import java.util.Random;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.example.demo.model.entities.Users;
+import com.example.demo.model.repository.DepartRepository;
+import com.example.demo.model.repository.RecordRepository;
+import com.example.demo.model.repository.StaffRepository;
+import com.example.demo.model.repository.UserRepository;
+
 //
-//import org.springframework.boot.CommandLineRunner;
-//import org.springframework.context.annotation.Bean;
-//import org.springframework.context.annotation.Configuration;
-//
-//import com.example.demo.model.entities.Departs;
-//import com.example.demo.model.entities.Records;
-//import com.example.demo.model.entities.Staffs;
-//import com.example.demo.model.repository.DepartRepository;
-//import com.example.demo.model.repository.RecordRepository;
-//import com.example.demo.model.repository.StaffRepository;
-//
-//@Configuration
+@Configuration
 public class FakeData {
 
 //	public Long randomNumber(int min, int max) {
@@ -43,8 +36,17 @@ public class FakeData {
 //		return Date.from(randomBirthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 //	}
 //	
-//	@Bean
-//	CommandLineRunner initFakeData(StaffRepository srepository, DepartRepository drepository, RecordRepository rrepository) {
+	@Bean
+	CommandLineRunner initFakeData(StaffRepository srepository, DepartRepository drepository, RecordRepository rrepository, UserRepository userRepository) {
+		return args -> {
+			Users user = new Users();
+			user.setFullname("hana zuki");
+			user.setUsername("hanazuki2010");
+			user.setPassword("$2a$10$nu1M79bQKcLVkV2RsddRpu6nggerld.79ZM4/90DsE7Lv8cXVFueu");
+			user.setActive(true);
+			user.setEmail("thotx1999@gmail.com");
+			userRepository.save(user);
+		};
 //		List<Staffs> slist = new ArrayList<>();
 //		List<Departs> dlist = new ArrayList<>();
 //		return args -> {
@@ -81,6 +83,6 @@ public class FakeData {
 //			});
 //			
 //		};
-//	}
+	}
 	
 }
