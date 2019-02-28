@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,9 +36,11 @@ public class FakeData {
 //		LocalDate randomBirthDate = LocalDate.ofEpochDay(randomDay);
 //		return Date.from(randomBirthDate.atStartOfDay(ZoneId.systemDefault()).toInstant());
 //	}
+	@Autowired
+	UserRepository userRepository;
 //	
 	@Bean
-	CommandLineRunner initFakeData(StaffRepository srepository, DepartRepository drepository, RecordRepository rrepository, UserRepository userRepository) {
+	CommandLineRunner initFakeData(StaffRepository srepository, DepartRepository drepository, RecordRepository rrepository) {
 		return args -> {
 			Users user = new Users();
 			user.setFullname("hana zuki");
