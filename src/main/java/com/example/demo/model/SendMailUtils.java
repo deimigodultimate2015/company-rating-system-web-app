@@ -15,8 +15,8 @@ public class SendMailUtils {
 	    mailSender.setHost("smtp.gmail.com");
 	    mailSender.setPort(587);
 	     
-	    mailSender.setUsername("thotxps06695@fpt.edu.vn");
-	    mailSender.setPassword("orga000000");
+	    mailSender.setUsername("insert your email here");
+	    mailSender.setPassword("insert your email password here");
 	     
 	    Properties props = mailSender.getJavaMailProperties();
 	    props.put("mail.transport.protocol", "smtp");
